@@ -178,6 +178,7 @@ const STORY_POINTS = [
 ];
 
 export function RekadiStreetFoodReimagined() {
+  const marqueeItems = Array.from({ length: 10 }, (_, i) => `marquee-${i}`);
   return (
     <section className="scroll-mt-16" aria-label="Rekadi street food">
       {/* —— Part 1: Street Food, Reimagined — bg_mascout.png —— */}
@@ -278,7 +279,7 @@ export function RekadiStreetFoodReimagined() {
             src="/part3_bg.png"
             alt=""
             fill
-            className="object-contain object-left object-top"
+            className="object-cover object-left object-top"
             sizes="100vw"
             priority={false}
           />
@@ -287,12 +288,17 @@ export function RekadiStreetFoodReimagined() {
         <Container className="relative z-10 px-5 pb-16 md:px-6 md:pb-20 lg:pb-24">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="ds-anim-fade-up flex justify-center lg:order-1 lg:justify-start">
-              <BlobFoodImage
-                src="/excellence.png"
-                alt="Misal Pav and Indian street food spread"
-                variant="alt"
-                objectPosition="object-left object-center"
-              />
+              <div className="relative w-full max-w-[min(100%,540px)]">
+                <Image
+                  src="/excellence.png"
+                  alt="Misal Pav and Indian street food spread"
+                  width={689}
+                  height={644}
+                  sizes="(min-width: 1024px) 540px, (min-width: 768px) 45vw, 90vw"
+                  className="h-auto w-full object-contain"
+                  priority={false}
+                />
+              </div>
             </div>
 
             <div className="ds-anim-fade-up max-w-xl lg:order-2 [animation-delay:80ms]">
@@ -321,6 +327,54 @@ export function RekadiStreetFoodReimagined() {
           </div>
         </Container>
       </div>
+
+      {/* —— Bar below Part 3 (outlined marquee) —— */}
+      <section
+        aria-label="Popular food marquee"
+        className="w-full bg-[var(--rk-sun)] py-6 md:py-7"
+      >
+        <div className="ds-marquee">
+          <div
+            className="ds-marquee-track items-center gap-10 pr-10"
+            style={{ animationDuration: "34s" }}
+          >
+            {marqueeItems.map((id, idx) => (
+              <div
+                key={id}
+                className="flex items-center gap-10 whitespace-nowrap"
+                aria-hidden={idx > 0}
+              >
+                <span
+                  className="font-[family-name:var(--font-display)] font-bold uppercase leading-none tracking-[0.02em] text-transparent"
+                  style={{
+                    WebkitTextStroke: "2px var(--rk-orange)",
+                    fontSize: "clamp(44px, 6vw, 76px)",
+                  }}
+                >
+                  POPULAR FOOD
+                </span>
+                <Image
+                  src="/barlogo.png"
+                  alt=""
+                  width={92}
+                  height={66}
+                  className="h-11 w-auto md:h-12"
+                  aria-hidden="true"
+                />
+                <span
+                  className="font-[family-name:var(--font-display)] font-bold uppercase leading-none tracking-[0.02em] text-transparent"
+                  style={{
+                    WebkitTextStroke: "2px var(--rk-orange)",
+                    fontSize: "clamp(44px, 6vw, 76px)",
+                  }}
+                >
+                  DELICIOUS FOOD
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </section>
   );
 }

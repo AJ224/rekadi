@@ -8,9 +8,9 @@ export function Footer() {
   return (
     <footer
       id="contact"
-      className="relative overflow-hidden rounded-t-[40px] bg-[#002B2B] text-white md:min-h-[486px]"
+      className="relative w-full max-w-none shrink-0 overflow-hidden bg-[#002B2B] text-white md:min-h-[486px]"
     >
-      {/* background artwork */}
+      {/* background artwork — cover full width (no side “margins” from letterboxing) */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <Image
           src="/footer_bg.png"
@@ -18,7 +18,7 @@ export function Footer() {
           fill
           priority={false}
           sizes="100vw"
-          className="object-contain object-bottom"
+          className="object-cover object-bottom"
         />
       </div>
 
@@ -123,7 +123,7 @@ function FooterCol({
   return (
     <div className={`ds-anim-fade-up ${className ?? ""}`}>
       <h3
-        className="text-[28px] font-medium leading-none text-[#f6c200]"
+        className="text-[28px] font-semibold leading-none text-[var(--rk-orange)]"
         style={{ fontFamily: "var(--font-display)" }}
       >
         {title}
@@ -149,7 +149,7 @@ function SocialCol() {
   return (
     <div className="ds-anim-fade-up">
       <h3
-        className="text-[28px] font-medium leading-none text-[#f6c200]"
+        className="text-[28px] font-semibold leading-none text-[var(--rk-orange)]"
         style={{ fontFamily: "var(--font-display)" }}
       >
         Social Media

@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 import { Container } from "@/components/ui/Container";
-import { CtaButtonLink } from "@/components/ui/CtaButtonLink";
 import { FullBleedBackgroundSection } from "@/components/ui/FullBleedBackgroundSection";
+import { PrimaryButtonLink } from "@/components/ui/ButtonLink";
 
 type MenuCard = {
   title: string;
@@ -11,9 +11,10 @@ type MenuCard = {
 
 export function ExploreMenuShowcase() {
   const cards: MenuCard[] = [
-    { title: "RICE BOWLS", imageSrc: "/menu_1.png" },
-    { title: "INDIAN BOWLS", imageSrc: "/menu_2.png" },
-    { title: "PASTA BOWLS", imageSrc: "/menu_3.png" },
+    { title: "VEG\nSANDWICHES", imageSrc: "/menu_1.png" },
+    { title: "PIZZA", imageSrc: "/menu_2.png" },
+    { title: "PASTA", imageSrc: "/menu_3.png" },
+    { title: "VADA JUNCTION", imageSrc: "/menu_4.png" },
   ];
 
   return (
@@ -22,55 +23,86 @@ export function ExploreMenuShowcase() {
       backgroundSrc="/exploremenubg.png"
       backgroundWrapperClassName="z-0 -top-14"  // adjust -top-10 to taste
       backgroundImageClassName="object-cover object-[20%_40%]"
-      contentClassName="relative z-10 pt-20 pb-6 md:pt-12 md:pb-12"
+      contentClassName="relative z-10 py-14 md:py-16"
     >
       <Container className="max-w-none">
-        <h2 className="text-center font-black tracking-[0.08em] text-zinc-900 text-2xl md:text-4xl ds-anim-fade-up">
-          EXPLORE OUR DELICIOUS MENU
+        <h2 className="text-center text-zinc-900 ds-h2 ds-anim-fade-up">
+          Rekadi Signature Bites
         </h2>
 
-        <div className="relative mt-10 md:px-14">
-          {/* arrows (desktop) */}
+        <div className="relative mt-10">
+          {/* arrows */}
           <button
             type="button"
             aria-label="Previous"
-            className="absolute left-0 top-1/2 hidden size-12 -translate-x-2 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6c200] text-xl text-zinc-900 shadow-[0_10px_20px_rgba(0,0,0,0.15)] md:flex"
+            className="absolute left-0 top-1/2 z-10 hidden size-11 -translate-x-3 -translate-y-1/2 place-items-center rounded-full bg-[var(--rk-sun)] text-[var(--rk-deep)] shadow-[0_10px_20px_rgba(0,0,0,0.14)] md:grid"
           >
-            ‹
+            <span className="text-2xl leading-none">‹</span>
           </button>
           <button
             type="button"
             aria-label="Next"
-            className="absolute right-0 top-1/2 hidden size-12 translate-x-2 -translate-y-1/2 items-center justify-center rounded-full bg-[#f6c200] text-xl text-zinc-900 shadow-[0_10px_20px_rgba(0,0,0,0.15)] md:flex"
+            className="absolute right-0 top-1/2 z-10 hidden size-11 translate-x-3 -translate-y-1/2 place-items-center rounded-full bg-[var(--rk-sun)] text-[var(--rk-deep)] shadow-[0_10px_20px_rgba(0,0,0,0.14)] md:grid"
           >
-            ›
+            <span className="text-2xl leading-none">›</span>
           </button>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+          <div className="grid gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-16">
             {cards.map((c, idx) => (
               <div
                 key={c.title}
-                className="mx-auto flex w-full max-w-[420px] flex-col gap-[10px] rounded-[20px] bg-[#f7dd9b] p-[28px] shadow-[0_14px_0_rgba(0,0,0,0.08)] ds-anim-fade-up lg:mx-0 lg:min-h-[445px]"
-                style={{ animationDelay: `${80 + idx * 70}ms` }}
+                className="relative mx-auto flex h-[383px] w-[295px] flex-col items-center bg-[#F5D34A] shadow-[0_12px_0_rgba(0,0,0,0.08)] ds-anim-fade-up"
+                style={{
+                  animationDelay: `${80 + idx * 70}ms`,
+                  borderTopLeftRadius: "130.5px",
+                  borderTopRightRadius: "130.5px",
+                  borderBottomLeftRadius: "18px",
+                  borderBottomRightRadius: "18px",
+                  paddingTop: "201px",
+                  paddingRight: "14px",
+                  paddingBottom: "32px",
+                  paddingLeft: "19px",
+                  rowGap: "10px",
+                }}
               >
-                <div className="relative aspect-[16/10] overflow-hidden rounded-[20px] bg-zinc-900">
+                {/* dish floats above the rounded arch like the mock
+                    Use left/right + justify-center so every image centers consistently. */}
+                <div className="absolute -top-14 left-0 right-0 flex justify-center">
                   <Image
                     src={c.imageSrc}
-                    alt={c.title}
-                    fill
-                    sizes="(min-width: 768px) 320px, 90vw"
-                    className="object-cover"
+                    alt={c.title.replaceAll("\n", " ")}
+                    width={520}
+                    height={320}
+                    sizes="(min-width: 1024px) 260px, (min-width: 640px) 40vw, 80vw"
+                    className="block h-auto w-[92%] object-contain drop-shadow-[0_10px_16px_rgba(0,0,0,0.20)]"
+                    priority={false}
                   />
                 </div>
-                <div className="text-center ds-grift-32 text-[#002B2B]">
+
+                <div
+                  className="whitespace-pre-line text-center ds-grift-32 text-black"
+                >
                   {c.title}
                 </div>
-                <CtaButtonLink href="#menu" variant="menuCard">
+
+                <a
+                  href="#menu"
+                  className="inline-flex h-11 w-[80%] items-center justify-center rounded-md bg-[var(--rk-orange)] px-5 text-sm font-extrabold text-white shadow-[0_6px_0_rgba(0,0,0,0.14)] transition hover:brightness-95 active:translate-y-[1px]"
+                >
                   ORDER NOW
-                </CtaButtonLink>
+                </a>
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <PrimaryButtonLink
+            href="#menu"
+            className="min-w-[200px] px-10 py-3.5 text-sm shadow-[0_6px_0_rgba(0,0,0,0.14)]"
+          >
+            VIEW MORE
+          </PrimaryButtonLink>
         </div>
       </Container>
     </FullBleedBackgroundSection>
