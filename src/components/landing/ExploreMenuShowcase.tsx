@@ -18,7 +18,7 @@ export function ExploreMenuShowcase() {
 
   return (
     <FullBleedBackgroundSection
-      className="bg-[#fbf3df]"
+      className="bg-[var(--rk-surface)]"
       backgroundSrc="/exploremenubg.png"
       backgroundWrapperClassName="z-0 -top-14"  // adjust -top-10 to taste
       backgroundImageClassName="object-cover object-[20%_40%]"

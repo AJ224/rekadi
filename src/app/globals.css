@@ -8,7 +8,7 @@
   --rk-deep: #002B2B;
   --rk-sun: #F5D74B;
 
-  --rk-surface: #ffffff;
+  --rk-surface: #f4f1ea;
   --rk-ink: #002B2B;
   --font-display: var(--font-baloo2);
   /* Grift isn't bundled yet; keep it as the first choice and fall back */
@@ -198,4 +198,43 @@ body {
     letter-spacing: 0;
     text-transform: uppercase;
   }
+
+  /**
+   * Organic “blob” photo frames with offset orange outline (Rekadi mockup).
+   */
+  .rk-blob {
+    position: relative;
+    width: min(100%, 440px);
+    aspect-ratio: 1;
+    margin-inline: auto;
+  }
+
+  .rk-blob__ring {
+    position: absolute;
+    inset: -11px;
+    border: 3px solid var(--rk-orange);
+    border-radius: 63% 37% 51% 49% / 48% 52% 47% 53%;
+    transform: rotate(-7deg);
+    pointer-events: none;
+  }
+
+  .rk-blob__inner {
+    position: absolute;
+    inset: 0;
+    border-radius: 58% 42% 48% 52% / 46% 54% 46% 54%;
+    overflow: hidden;
+    transform: rotate(5deg);
+    background: color-mix(in oklab, var(--rk-deep) 6%, white);
+  }
+
+  .rk-blob--alt .rk-blob__ring {
+    border-radius: 42% 58% 55% 45% / 52% 44% 56% 48%;
+    transform: rotate(6deg);
+  }
+
+  .rk-blob--alt .rk-blob__inner {
+    border-radius: 48% 52% 42% 58% / 54% 46% 52% 48%;
+    transform: rotate(-4deg);
+  }
+
 }

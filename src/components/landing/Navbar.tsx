@@ -13,7 +13,7 @@ export function Navbar() {
   ];
 
   return (
-    <header className="border-b border-zinc-900/10 bg-[#fbf3df]">
+    <header className="border-b border-zinc-900/10 bg-[var(--rk-surface)]">
       <Container className="grid h-20 grid-cols-[auto_1fr_auto] items-center">
         <a href="#top" className="inline-flex items-center gap-3 ds-anim-fade-in">
           <Image

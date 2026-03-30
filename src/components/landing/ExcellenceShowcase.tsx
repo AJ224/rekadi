@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 
 export function ExcellenceShowcase() {
   return (
-    <section className="bg-[#fbf3df] py-10 md:py-14">
+    <section className="bg-[var(--rk-surface)] py-10 md:py-14">
       <Container>
         <div className="grid items-center gap-10 md:grid-cols-[1fr_1fr] md:gap-12">
           {/* visual (same pattern as Welcome section) */}
