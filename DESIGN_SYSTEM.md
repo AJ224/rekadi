@@ -1,4 +1,4 @@
-# Design System — Bowl Diaries
+# Design System — Rekadi
 
 ## Typography
 

@@ -12,7 +12,7 @@ export function PrimaryButtonLink({
   return (
     <a
       href={href}
-      className={`inline-flex items-center justify-center rounded-md bg-[#f6c200] px-5 py-3 text-sm font-extrabold text-zinc-900 shadow-[0_8px_0_rgba(15,90,60,0.15)] transition hover:brightness-95 active:translate-y-[1px] ${className ?? ""}`}
+      className={`inline-flex items-center justify-center rounded-md bg-[var(--rk-orange)] px-5 py-3 text-sm font-extrabold text-white shadow-[0_8px_0_rgba(0,0,0,0.18)] transition hover:brightness-95 active:translate-y-[1px] ${className ?? ""}`}
     >
       {children}
     </a>

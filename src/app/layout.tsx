@@ -15,10 +15,11 @@ const geistMono = Geist_Mono({
 const baloo2 = Baloo_2({
   variable: "--font-baloo2",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Bowl Diaries",
+  title: "Rekadi",
   description: "Fresh, flavorful bowls crafted with care.",
   icons: {
     icon: "/LOGO_1 1.ico",
@@ -36,7 +37,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${baloo2.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#fbf3df] text-zinc-900">
+      <body className="min-h-full flex flex-col bg-[var(--rk-surface)] text-[var(--rk-ink)]">
         {children}
       </body>
     </html>
