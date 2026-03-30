@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer
       id="contact"
-      className="relative w-full max-w-none shrink-0 overflow-hidden bg-[#002B2B] text-white md:min-h-[486px]"
+      className="relative w-full max-w-none shrink-0 overflow-hidden rounded-t-[40px] bg-[#002B2B] text-white md:min-h-[486px]"
     >
       {/* background artwork — cover full width (no side “margins” from letterboxing) */}
       <div className="pointer-events-none absolute inset-0 z-0">

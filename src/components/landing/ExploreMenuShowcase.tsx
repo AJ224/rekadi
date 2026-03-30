@@ -30,7 +30,7 @@ export function ExploreMenuShowcase() {
           Rekadi Signature Bites
         </h2>
 
-        <div className="relative mt-10">
+        <div className="relative mt-14 pt-10 md:mt-16 md:pt-12">
           {/* arrows */}
           <button
             type="button"
@@ -47,7 +47,7 @@ export function ExploreMenuShowcase() {
             <span className="text-2xl leading-none">›</span>
           </button>
 
-          <div className="grid gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-16">
+          <div className="grid gap-x-4 gap-y-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-4 lg:gap-y-14">
             {cards.map((c, idx) => (
               <div
                 key={c.title}
@@ -87,7 +87,7 @@ export function ExploreMenuShowcase() {
 
                 <a
                   href="#menu"
-                  className="inline-flex h-11 w-[80%] items-center justify-center rounded-md bg-[var(--rk-orange)] px-5 text-sm font-extrabold text-white shadow-[0_6px_0_rgba(0,0,0,0.14)] transition hover:brightness-95 active:translate-y-[1px]"
+                  className="inline-flex h-11 w-[80%] items-center justify-center whitespace-nowrap rounded-md bg-[var(--rk-orange)] px-5 text-sm font-extrabold text-white shadow-[0_6px_0_rgba(0,0,0,0.14)] transition hover:brightness-95 active:translate-y-[1px]"
                 >
                   ORDER NOW
                 </a>
