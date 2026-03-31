@@ -59,7 +59,7 @@ export function Navbar() {
 
   return (
     <header className="border-b border-zinc-900/10 bg-[var(--rk-surface)]">
-      <Container className="grid h-20 grid-cols-3 items-center">
+      <Container className="grid h-20 grid-cols-[auto_1fr_auto] items-center">
         <a
           href="#top"
           className="inline-flex items-center gap-3 ds-anim-fade-in"
@@ -76,28 +76,13 @@ export function Navbar() {
           <span className="sr-only">Rekadi</span>
         </a>
 
-        {/* Mobile: centered hamburger */}
-        <div className="flex items-center justify-center md:hidden">
-          <button
-            type="button"
-            aria-haspopup="dialog"
-            aria-expanded={open}
-            aria-controls={panelId}
-            onClick={() => setOpen(true)}
-            className="inline-flex items-center justify-center rounded-2xl border border-zinc-900/10 bg-white/55 px-4 py-3 text-[var(--rk-deep)] shadow-[0_10px_20px_rgba(0,0,0,0.12)] backdrop-blur transition hover:bg-white/65 active:translate-y-[1px]"
-          >
-            <IconMenu className="size-6" />
-            <span className="sr-only">Open menu</span>
-          </button>
-        </div>
-
         {/* Desktop nav */}
         <nav className="hidden items-center justify-center gap-10 text-base font-semibold text-zinc-900/80 md:flex ds-anim-fade-in">
           {links.map((t) => (
             <a
               key={t.label}
               href={t.href}
-              className="transition hover:text-zinc-900"
+              className="whitespace-nowrap transition hover:text-zinc-900"
             >
               {t.label}
             </a>
@@ -105,10 +90,23 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center justify-end gap-3">
+          {/* Mobile: hamburger on right end (no Order Now in navbar) */}
+          <button
+            type="button"
+            aria-haspopup="dialog"
+            aria-expanded={open}
+            aria-controls={panelId}
+            onClick={() => setOpen(true)}
+            className="inline-flex items-center justify-center rounded-2xl border border-zinc-900/10 bg-white/55 px-4 py-3 text-[var(--rk-deep)] shadow-[0_10px_20px_rgba(0,0,0,0.12)] backdrop-blur transition hover:bg-white/65 active:translate-y-[1px] md:hidden"
+          >
+            <IconMenu className="size-6" />
+            <span className="sr-only">Open menu</span>
+          </button>
+
           <CtaButtonLink
             href={urls.orderNowUrl}
             variant="navbar"
-            className="hidden md:inline-flex ds-anim-fade-in"
+            className="!hidden md:!inline-flex ds-anim-fade-in"
           >
             <CartIcon className="size-5" />
             Order Now

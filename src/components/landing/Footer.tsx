@@ -61,13 +61,6 @@ export function Footer() {
               Info
             </h3>
             <div className="mt-4 space-y-3 text-white/85">
-              <div className="flex items-start justify-center gap-3 md:justify-start">
-                <IconPin className="mt-0.5 size-4 shrink-0 text-white/75" />
-                <p className="text-sm font-medium leading-snug">
-                  Shop no 1, Rebecca Queen, Sagershet Rd, Perbodi Wadi, Orbhat, Vasai West,
-                  Mulgaon, Vasai-Virar, Maharashtra 401207
-                </p>
-              </div>
               <div className="flex items-center justify-center gap-3 md:justify-start">
                 <IconPhone className="size-4 shrink-0 text-white/75" />
                 <a

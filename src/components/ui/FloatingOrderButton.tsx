@@ -133,6 +133,13 @@ export function FloatingOrderButton() {
         icon: <IconPhone className="size-4 text-[var(--rk-deep)]" />,
       },
       {
+        key: "direction",
+        label: "Get Direction",
+        subLabel: "Open in Maps",
+        href: urls.locationUrl ?? "",
+        icon: <IconPin className="size-4 text-[var(--rk-deep)]" />,
+      },
+      {
         key: "zomato",
         label: "Order on Zomato",
         href: urls.zomatoUrl ?? "",
@@ -143,13 +150,6 @@ export function FloatingOrderButton() {
         label: "Order on Swiggy",
         href: urls.swiggyUrl ?? "",
         icon: <BrandMark label="S" className="bg-[#FC8019] text-white" />,
-      },
-      {
-        key: "direction",
-        label: "Get Direction",
-        subLabel: "Open in Maps",
-        href: urls.locationUrl ?? "",
-        icon: <IconPin className="size-4 text-[var(--rk-deep)]" />,
       },
     ];
 
