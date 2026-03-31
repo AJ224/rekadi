@@ -2,6 +2,9 @@ type CtaButtonLinkProps = Readonly<{
   href: string;
   children: React.ReactNode;
   className?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  target?: string;
+  rel?: string;
   /**
    * Visual preset. Use these to keep visuals identical where previously duplicated.
    */
@@ -27,12 +30,18 @@ export function CtaButtonLink({
   href,
   children,
   className,
+  onClick,
+  target,
+  rel,
   variant = "hero",
 }: CtaButtonLinkProps) {
   return (
     <a
       href={href}
       className={`${BASE} ${VARIANTS[variant]} ${className ?? ""}`}
+      onClick={onClick}
+      target={target}
+      rel={rel}
     >
       {children}
     </a>

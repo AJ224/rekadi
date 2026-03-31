@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Container } from "@/components/ui/Container";
+import urls from "@/config/urls.json";
 
 type FooterLink = { label: string; href: string };
 
@@ -8,7 +9,7 @@ export function Footer() {
   return (
     <footer
       id="contact"
-      className="relative w-full max-w-none shrink-0 overflow-hidden rounded-t-[40px] bg-[#002B2B] text-white md:min-h-[486px]"
+      className="relative w-full max-w-none shrink-0 overflow-hidden rounded-t-[40px] bg-[#002B2B] text-white md:min-h-[420px]"
     >
       {/* background artwork — cover full width (no side “margins” from letterboxing) */}
       <div className="pointer-events-none absolute inset-0 z-0">
@@ -35,79 +36,79 @@ export function Footer() {
       </div>
 
       <Container className="relative z-10 py-8 md:py-16">
-        {/* Main grid: logo+contact on left, nav columns on right */}
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-[1.6fr_1fr_1fr_1fr] md:gap-6 lg:gap-8">
-          {/* Left: Logo + Contact Info */}
-          <div className="ds-anim-fade-up">
+        <div className="grid grid-cols-1 gap-10 text-center md:grid-cols-[1fr_1.1fr_0.9fr_1fr] md:gap-6 md:text-left lg:gap-10">
+          {/* 1) Logo */}
+          <div className="ds-anim-fade-up flex flex-col items-center md:items-start">
             <Image
               src="/footer_logo.png"
-              alt="Bowl Diaries"
-              width={220}
-              height={120}
+              alt="Rekadi"
+              width={180}
+              height={96}
               priority={false}
-              className="h-auto w-[160px] md:w-[200px] lg:w-[220px]"
+              className="h-auto w-[120px] md:w-[140px] lg:w-[160px]"
             />
+            <div className="mt-4 max-w-xs text-sm font-semibold text-white/75 md:mt-5">
+              Street food, reimagined — bold flavours, hygienic prep, and quick service.
+            </div>
+          </div>
 
-            <div className="mt-4 space-y-3 text-white/90 md:mt-6 md:space-y-4">
-              {/* Address */}
-              <div className="flex gap-3">
-                <IconPin className="mt-0.5 size-4 shrink-0 text-white/80 md:size-[18px]" />
-                <p
-                  className="text-[22px] font-normal leading-none tracking-[0]"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  Shop no 1, Rebecca Queen, Sagershet Rd, Perbodi Wadi, Orbhat,
-                  Vasai West, Mulgaon, Vasai-Virar, Maharashtra 401207
+          {/* 2) Info */}
+          <div className="ds-anim-fade-up [animation-delay:60ms]">
+            <h3
+              className="text-lg font-semibold leading-none text-[var(--rk-orange)]"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Info
+            </h3>
+            <div className="mt-4 space-y-3 text-white/85">
+              <div className="flex items-start justify-center gap-3 md:justify-start">
+                <IconPin className="mt-0.5 size-4 shrink-0 text-white/75" />
+                <p className="text-sm font-medium leading-snug">
+                  Shop no 1, Rebecca Queen, Sagershet Rd, Perbodi Wadi, Orbhat, Vasai West,
+                  Mulgaon, Vasai-Virar, Maharashtra 401207
                 </p>
               </div>
-
-              {/* Phone */}
-              <div className="flex items-center gap-3">
-                <IconPhone className="size-4 shrink-0 text-white/80 md:size-[18px]" />
+              <div className="flex items-center justify-center gap-3 md:justify-start">
+                <IconPhone className="size-4 shrink-0 text-white/75" />
                 <a
-                  className="text-[22px] font-normal leading-none transition hover:text-white"
-                  href="tel:+917770060798"
-                  style={{ fontFamily: "var(--font-body)" }}
+                  className="text-sm font-semibold transition hover:text-white"
+                  href={urls.callUrl}
                 >
-                  +91 77700 60798
+                  +91 77700 60305
                 </a>
               </div>
-
-              {/* Email */}
-              <div className="flex items-center gap-3">
-                <IconMail className="size-4 shrink-0 text-white/80 md:size-[18px]" />
+              <div className="flex items-center justify-center gap-3 md:justify-start">
+                <IconMail className="size-4 shrink-0 text-white/75" />
                 <a
-                  className="text-[22px] font-normal leading-none transition hover:text-white"
-                  href="mailto:info@bowldiaries.com"
-                  style={{ fontFamily: "var(--font-body)" }}
+                  className="text-sm font-semibold transition hover:text-white"
+                  href="mailto:info@rekadi.com"
                 >
-                  info@bowldiaries.com
+                  info@rekadi.com
                 </a>
+              </div>
+              <div className="flex items-center justify-center gap-3 md:justify-start">
+                <IconClock className="size-4 shrink-0 text-white/75" />
+                <div className="text-sm font-semibold">
+                  Delivery: 8 AM to 10 PM
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Company */}
+          {/* 3) Links */}
           <FooterCol
-            title="Company"
+            title="Links"
+            className="text-center md:text-left [animation-delay:120ms]"
             links={[
               { label: "About Us", href: "#about" },
-              { label: "Our Story", href: "#about" },
-              { label: "Location", href: "#contact" },
+              { label: "Our Story", href: "#story" },
+              { label: "Contact Us", href: urls.callUrl },
+              { label: "Help & Support", href: urls.callUrl },
+              { label: "Privacy Policy", href: "#privacy" },
             ]}
           />
 
-          {/* Get Help */}
-          <FooterCol
-            title="Get Help"
-            links={[
-              { label: "Contact Us", href: "#contact" },
-              { label: "Help & Support", href: "#contact" },
-              { label: "Location", href: "#contact" },
-            ]}
-          />
-
-          {/* Social Media */}
+          {/* 4) Social + Order now */}
           <SocialCol />
         </div>
       </Container>
@@ -123,17 +124,17 @@ function FooterCol({
   return (
     <div className={`ds-anim-fade-up ${className ?? ""}`}>
       <h3
-        className="text-[28px] font-semibold leading-none text-[var(--rk-orange)]"
+        className="text-lg font-semibold leading-none text-[var(--rk-orange)]"
         style={{ fontFamily: "var(--font-display)" }}
       >
         {title}
       </h3>
-      <ul className="mt-3 space-y-2 md:mt-6 md:space-y-4">
+      <ul className="mt-4 space-y-2.5">
         {links.map((l) => (
           <li key={l.label}>
             <a
               href={l.href}
-              className="text-[22px] font-normal leading-none text-white/80 transition hover:text-white md:leading-[21px]"
+              className="text-sm font-semibold leading-snug text-white/80 transition hover:text-white"
               style={{ fontFamily: "var(--font-body)" }}
             >
               {l.label}
@@ -146,35 +147,113 @@ function FooterCol({
 }
 
 function SocialCol() {
+  const orderIcons = [
+    {
+      key: "zomato",
+      label: "Zomato",
+      href: urls.zomatoUrl ?? "",
+      icon: <BrandMark label="Z" className="bg-[#E23744] text-white" />,
+    },
+    {
+      key: "swiggy",
+      label: "Swiggy",
+      href: urls.swiggyUrl ?? "",
+      icon: <BrandMark label="S" className="bg-[#FC8019] text-white" />,
+    },
+    {
+      key: "petpooja",
+      label: "Petpooja",
+      href: urls.petpoojaUrl ?? "",
+      icon: <BrandMark label="P" className="bg-[#00AEEF] text-white" />,
+    },
+  ];
+
   return (
     <div className="ds-anim-fade-up">
       <h3
-        className="text-[28px] font-semibold leading-none text-[var(--rk-orange)]"
+        className="text-lg font-semibold leading-none text-[var(--rk-orange)]"
         style={{ fontFamily: "var(--font-display)" }}
       >
         Social Media
       </h3>
-      <div className="mt-3 flex items-center gap-3 md:mt-6">
+      <div className="mt-4 flex items-center justify-center gap-3 md:justify-start">
         <a
-          href="https://instagram.com"
+          href={urls.instagramUrl ?? "https://www.instagram.com/"}
           className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
           aria-label="Instagram"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <IconInstagram className="size-5 text-white" />
         </a>
         <a
-          href="https://facebook.com"
+          href={urls.facebookUrl ?? "https://www.facebook.com/"}
           className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
           aria-label="Facebook"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <IconFacebook className="size-5 text-white" />
         </a>
+      </div>
+
+      <div className="mt-6">
+        <div
+          className="text-sm font-extrabold tracking-wide text-white/90"
+          style={{ fontFamily: "var(--font-body)" }}
+        >
+          Order Now
+        </div>
+        <div className="mt-3 flex items-center justify-center gap-3 md:justify-start">
+          {orderIcons.map((o) => {
+            const enabled = (o.href ?? "").trim().length > 0;
+            const isExternal = enabled && !o.href.startsWith("#") && !o.href.startsWith("tel:");
+            return enabled ? (
+              <a
+                key={o.key}
+                href={o.href}
+                className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
+                aria-label={o.label}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
+              >
+                {o.icon}
+              </a>
+            ) : (
+              <div
+                key={o.key}
+                className="inline-flex size-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 opacity-60"
+                aria-label={o.label}
+                title={`${o.label} (coming soon)`}
+              >
+                {o.icon}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
 }
 
 /* ── Icons ── */
+
+function BrandMark({
+  label,
+  className,
+}: Readonly<{
+  label: string;
+  className: string;
+}>) {
+  return (
+    <span
+      className={`grid size-6 place-items-center rounded-md text-[12px] font-extrabold ${className}`}
+      aria-hidden="true"
+    >
+      {label}
+    </span>
+  );
+}
 
 function IconPin(props: Readonly<{ className?: string }>) {
   return (
@@ -225,6 +304,24 @@ function IconMail(props: Readonly<{ className?: string }>) {
     >
       <rect x="2" y="4" width="20" height="16" rx="2" />
       <path d="m22 7-10 7L2 7" />
+    </svg>
+  );
+}
+
+function IconClock(props: Readonly<{ className?: string }>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={props.className}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
     </svg>
   );
 }

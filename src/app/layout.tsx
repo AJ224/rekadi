@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Baloo_2, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { FloatingOrderButton } from "@/components/ui/FloatingOrderButton";
+import { FloatingCallButton } from "@/components/ui/FloatingCallButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[var(--rk-surface)] text-[var(--rk-ink)]">
         {children}
+        <FloatingCallButton />
         <FloatingOrderButton />
       </body>
     </html>

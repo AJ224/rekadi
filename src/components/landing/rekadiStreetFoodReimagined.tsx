@@ -274,7 +274,7 @@ export function RekadiStreetFoodReimagined() {
       </div>
 
       {/* —— Part 3: A Story from the Streets — part3_bg.png —— */}
-      <div className="relative bg-[var(--rk-surface)]">
+      <div id="story" className="relative bg-[var(--rk-surface)] scroll-mt-16">
         <div className="pointer-events-none absolute inset-0 z-0">
           <Image
             src="/part3_bg.png"

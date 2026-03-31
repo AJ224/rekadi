@@ -1,10 +1,12 @@
 {
   "orderNowUrl": "#menu",
   "exploreMenuUrl": "#menu",
-  "callUrl": "tel:+917770060798",
-  "locationUrl": "#contact",
-  "takeawayUrl": "#menu",
-  "zomatoUrl": "",
-  "swiggyUrl": "",
-  "petpoojaUrl": ""
+  "callUrl": "tel:+917770060305",
+  "locationUrl": "https://share.google/W8SL9sdDtJHJlffOC",
+  "takeawayUrl": "https://drive.google.com/file/d/1mUiJiFQ3g5gB39eOLJfxJx5Jt1pdq5Px/view",
+  "zomatoUrl": "https://link.zomato.com/xqzv/rshare?id=13397779930563c5c",
+  "swiggyUrl": "https://www.swiggy.com/menu/1355755?source=sharing",
+  "petpoojaUrl": "",
+  "instagramUrl": "https://www.instagram.com/rekadi_streetfood/",
+  "facebookUrl": "https://www.facebook.com/rekadi.streetfood"
 }

@@ -66,6 +66,44 @@ function IconPin(props: Readonly<{ className?: string }>) {
   );
 }
 
+function IconGlobe(props: Readonly<{ className?: string }>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={props.className}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18" />
+      <path d="M12 3a14 14 0 0 1 0 18" />
+      <path d="M12 3a14 14 0 0 0 0 18" />
+    </svg>
+  );
+}
+
+function IconBag(props: Readonly<{ className?: string }>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={props.className}
+      aria-hidden="true"
+    >
+      <path d="M6 8h12l-1 13H7L6 8Z" />
+      <path d="M9 8a3 3 0 0 1 6 0" />
+    </svg>
+  );
+}
+
 export function FloatingOrderButton() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
@@ -74,46 +112,44 @@ export function FloatingOrderButton() {
   const items = useMemo<MenuItem[]>(() => {
     const list: MenuItem[] = [
       {
-        key: "call",
-        label: "Call",
-        subLabel: "Talk to us",
-        href: urls.callUrl ?? "",
-        icon: <IconPhone className="size-4 text-[var(--rk-deep)]" />,
-      },
-      {
-        key: "location",
-        label: "Location",
-        subLabel: "Get directions",
-        href: urls.locationUrl ?? "",
-        icon: <IconPin className="size-4 text-[var(--rk-deep)]" />,
+        key: "website",
+        label: "From our website",
+        subLabel: "Order directly",
+        href: urls.orderNowUrl ?? "",
+        icon: <IconGlobe className="size-4 text-[var(--rk-deep)]" />,
       },
       {
         key: "takeaway",
         label: "Takeaway",
-        subLabel: "Order directly",
-        href: urls.takeawayUrl ?? urls.orderNowUrl ?? "",
-        icon: <CartIcon className="size-4 text-[var(--rk-deep)]" />,
+        subLabel: "Menu card",
+        href: urls.takeawayUrl ?? "",
+        icon: <IconBag className="size-4 text-[var(--rk-deep)]" />,
+      },
+      {
+        key: "call",
+        label: "Order on call",
+        subLabel: "+91 77700 60305",
+        href: urls.callUrl ?? "",
+        icon: <IconPhone className="size-4 text-[var(--rk-deep)]" />,
       },
       {
         key: "zomato",
-        label: "Zomato",
+        label: "Order on Zomato",
         href: urls.zomatoUrl ?? "",
         icon: <BrandMark label="Z" className="bg-[#E23744] text-white" />,
-        external: true,
       },
       {
         key: "swiggy",
-        label: "Swiggy",
+        label: "Order on Swiggy",
         href: urls.swiggyUrl ?? "",
         icon: <BrandMark label="S" className="bg-[#FC8019] text-white" />,
-        external: true,
       },
       {
-        key: "petpooja",
-        label: "Petpooja",
-        href: urls.petpoojaUrl ?? "",
-        icon: <BrandMark label="P" className="bg-[#00AEEF] text-white" />,
-        external: true,
+        key: "direction",
+        label: "Get Direction",
+        subLabel: "Open in Maps",
+        href: urls.locationUrl ?? "",
+        icon: <IconPin className="size-4 text-[var(--rk-deep)]" />,
       },
     ];
 
@@ -155,7 +191,7 @@ export function FloatingOrderButton() {
         >
           <div className="px-4 pb-2 pt-4">
             <div className="text-sm font-extrabold tracking-wide text-[var(--rk-deep)]">
-              Order options
+              Order Now
             </div>
             <div className="mt-1 text-xs font-semibold text-zinc-600">
               Choose where you want to order from
@@ -165,7 +201,10 @@ export function FloatingOrderButton() {
           <div className="grid gap-1 px-2 pb-2">
             {items.map((item) => {
               const isExternal =
-                item.external && !item.href.startsWith("#") && !item.href.startsWith("tel:");
+                (item.external ??
+                  (item.href.startsWith("http://") || item.href.startsWith("https://"))) &&
+                !item.href.startsWith("#") &&
+                !item.href.startsWith("tel:");
               return (
                 <a
                   key={item.key}
@@ -211,7 +250,7 @@ export function FloatingOrderButton() {
           <CartIcon className="size-5" />
         </span>
         <span className="text-sm font-extrabold tracking-wide">
-          {open ? "Close" : "Order"}
+          {open ? "Close" : "Order Now"}
         </span>
       </button>
     </div>

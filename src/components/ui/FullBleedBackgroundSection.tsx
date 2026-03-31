@@ -2,6 +2,7 @@ import Image from "next/image";
 
 type FullBleedBackgroundSectionProps = Readonly<{
   as?: "section" | "div";
+  id?: string;
   className?: string;
   backgroundSrc: string;
   backgroundAlt?: string;
@@ -20,6 +21,7 @@ type FullBleedBackgroundSectionProps = Readonly<{
 
 export function FullBleedBackgroundSection({
   as = "section",
+  id,
   className,
   backgroundSrc,
   backgroundAlt = "",
@@ -34,7 +36,7 @@ export function FullBleedBackgroundSection({
   const Tag = as;
 
   return (
-    <Tag className={`relative w-full overflow-hidden ${className ?? ""}`}>
+    <Tag id={id} className={`relative w-full overflow-hidden ${className ?? ""}`}>
       <div className={`pointer-events-none absolute inset-0 ${backgroundWrapperClassName}`}>
         <Image
           src={backgroundSrc}

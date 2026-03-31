@@ -20,6 +20,7 @@ export function ExploreMenuShowcase() {
 
   return (
     <FullBleedBackgroundSection
+      id="menu"
       className="bg-[var(--rk-surface)]"
       backgroundSrc="/exploremenubg.png"
       backgroundWrapperClassName="z-0 -top-14"  // adjust -top-10 to taste
@@ -27,11 +28,14 @@ export function ExploreMenuShowcase() {
       contentClassName="relative z-10 py-14 md:py-16"
     >
       <Container className="max-w-none">
-        <h2 className="text-center text-zinc-900 ds-h2 ds-anim-fade-up">
+        <h2
+          id="signature-bites"
+          className="scroll-mt-24 text-center text-zinc-900 ds-h2 ds-anim-fade-up"
+        >
           Rekadi Signature Bites
         </h2>
 
-        <div className="relative mt-14 pt-10 md:mt-16 md:pt-12">
+        <div className="relative mt-10 pt-10 md:mt-14 md:pt-12">
           {/* arrows */}
           <button
             type="button"
@@ -48,11 +52,11 @@ export function ExploreMenuShowcase() {
             <span className="text-2xl leading-none">›</span>
           </button>
 
-          <div className="grid gap-x-4 gap-y-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-4 lg:gap-y-14">
+          <div className="grid justify-items-center gap-x-4 gap-y-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-4 lg:gap-y-14">
             {cards.map((c, idx) => (
               <div
                 key={c.title}
-                className="relative mx-auto flex h-[383px] w-[295px] flex-col items-center bg-[#F5D34A] shadow-[0_12px_0_rgba(0,0,0,0.08)] ds-anim-fade-up"
+                className="relative flex w-full max-w-[295px] flex-col items-center bg-[#F5D34A] shadow-[0_12px_0_rgba(0,0,0,0.08)] ds-anim-fade-up"
                 style={{
                   animationDelay: `${80 + idx * 70}ms`,
                   borderTopLeftRadius: "130.5px",
