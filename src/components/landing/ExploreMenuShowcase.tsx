@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { FullBleedBackgroundSection } from "@/components/ui/FullBleedBackgroundSection";
 import { PrimaryButtonLink } from "@/components/ui/ButtonLink";
+import urls from "@/config/urls.json";
 
 type MenuCard = {
   title: string;
@@ -86,7 +87,7 @@ export function ExploreMenuShowcase() {
                 </div>
 
                 <a
-                  href="#menu"
+                  href={urls.orderNowUrl}
                   className="inline-flex h-11 w-[80%] items-center justify-center whitespace-nowrap rounded-md bg-[var(--rk-orange)] px-5 text-sm font-extrabold text-white shadow-[0_6px_0_rgba(0,0,0,0.14)] transition hover:brightness-95 active:translate-y-[1px]"
                 >
                   ORDER NOW

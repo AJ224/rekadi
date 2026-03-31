@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Container } from "@/components/ui/Container";
+import urls from "@/config/urls.json";
 
 /** Encoded path for public assets with spaces */
 const GROUP_23 = "/Group%2023.png";
@@ -8,7 +9,7 @@ const GROUP_23 = "/Group%2023.png";
 function OrderNowCta({ className }: Readonly<{ className?: string }>) {
   return (
     <a
-      href="#menu"
+      href={urls.orderNowUrl}
       className={`group ds-cta inline-flex items-center gap-3 rounded-xl bg-[var(--rk-orange)] px-6 py-3.5 text-white uppercase tracking-wide shadow-[0_6px_0_rgba(0,0,0,0.12)] transition hover:brightness-[0.98] active:translate-y-[1px] active:shadow-[0_4px_0_rgba(0,0,0,0.12)] ${className ?? ""}`}
     >
       <span>ORDERNOW</span>
@@ -248,22 +249,22 @@ export function RekadiStreetFoodReimagined() {
               backgroundPosition: "top center",
             }}
           >
-            <div className="grid gap-10 sm:grid-cols-3 sm:gap-6 lg:gap-10">
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-10">
               <div className="flex flex-col items-center text-center ds-anim-fade-up">
-                <IconStreetCart className="mx-auto h-16 w-16 text-[var(--rk-orange)] md:h-[72px] md:w-[72px]" />
-                <p className="mt-4 max-w-[12rem] text-[var(--rk-deep)] ds-body-lg">
+                <IconStreetCart className="mx-auto h-10 w-10 text-[var(--rk-orange)] sm:h-16 sm:w-16 md:h-[72px] md:w-[72px]" />
+                <p className="mt-2 max-w-[8.5rem] text-[13px] font-semibold leading-snug text-[var(--rk-deep)] sm:mt-4 sm:max-w-[12rem] sm:text-base">
                   Street Style Classics
                 </p>
               </div>
               <div className="flex flex-col items-center text-center ds-anim-fade-up [animation-delay:70ms]">
-                <IconGourmetCloche className="mx-auto h-16 w-16 text-[var(--rk-orange)] md:h-[72px] md:w-[72px]" />
-                <p className="mt-4 max-w-[14rem] text-[var(--rk-deep)] ds-body-lg">
+                <IconGourmetCloche className="mx-auto h-10 w-10 text-[var(--rk-orange)] sm:h-16 sm:w-16 md:h-[72px] md:w-[72px]" />
+                <p className="mt-2 max-w-[9.5rem] text-[13px] font-semibold leading-snug text-[var(--rk-deep)] sm:mt-4 sm:max-w-[14rem] sm:text-base">
                   Gourmet Street Creations
                 </p>
               </div>
               <div className="flex flex-col items-center text-center ds-anim-fade-up [animation-delay:140ms]">
-                <IconHealthyHeart className="mx-auto h-16 w-16 text-[var(--rk-orange)] md:h-[72px] md:w-[72px]" />
-                <p className="mt-4 max-w-[12rem] text-[var(--rk-deep)] ds-body-lg">
+                <IconHealthyHeart className="mx-auto h-10 w-10 text-[var(--rk-orange)] sm:h-16 sm:w-16 md:h-[72px] md:w-[72px]" />
+                <p className="mt-2 max-w-[9rem] text-[13px] font-semibold leading-snug text-[var(--rk-deep)] sm:mt-4 sm:max-w-[12rem] sm:text-base">
                   Healthy Street Bites
                 </p>
               </div>
