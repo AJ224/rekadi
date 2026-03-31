@@ -35,17 +35,17 @@ export function Footer() {
         />
       </div>
 
-      <Container className="relative z-10 py-8 md:py-16">
-        <div className="grid grid-cols-1 gap-10 text-center md:grid-cols-[1fr_1.1fr_0.9fr_1fr] md:gap-6 md:text-left lg:gap-10">
+      <Container className="relative z-10 py-6 pb-28 md:py-16 md:pb-16">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 text-left md:grid-cols-[1fr_1.1fr_0.9fr_1fr] md:gap-6 lg:gap-10">
           {/* 1) Logo */}
-          <div className="ds-anim-fade-up flex flex-col items-center md:items-start">
+          <div className="ds-anim-fade-up flex flex-col items-start">
             <Image
               src="/footer_logo.png"
               alt="Rekadi"
               width={180}
               height={96}
               priority={false}
-              className="h-auto w-[120px] md:w-[140px] lg:w-[160px]"
+              className="h-auto w-[110px] md:w-[140px] lg:w-[160px]"
             />
             <div className="mt-4 max-w-xs text-sm font-semibold text-white/75 md:mt-5">
               Street food, reimagined — bold flavours, hygienic prep, and quick service.
@@ -61,7 +61,7 @@ export function Footer() {
               Info
             </h3>
             <div className="mt-4 space-y-3 text-white/85">
-              <div className="flex items-center justify-center gap-3 md:justify-start">
+              <div className="flex items-center justify-start gap-3">
                 <IconPhone className="size-4 shrink-0 text-white/75" />
                 <a
                   className="text-sm font-semibold transition hover:text-white"
@@ -70,7 +70,7 @@ export function Footer() {
                   +91 77700 60305
                 </a>
               </div>
-              <div className="flex items-center justify-center gap-3 md:justify-start">
+              <div className="flex items-center justify-start gap-3">
                 <IconMail className="size-4 shrink-0 text-white/75" />
                 <a
                   className="text-sm font-semibold transition hover:text-white"
@@ -79,19 +79,13 @@ export function Footer() {
                   info@rekadi.com
                 </a>
               </div>
-              <div className="flex items-center justify-center gap-3 md:justify-start">
-                <IconClock className="size-4 shrink-0 text-white/75" />
-                <div className="text-sm font-semibold">
-                  Delivery: 8 AM to 10 PM
-                </div>
-              </div>
             </div>
           </div>
 
           {/* 3) Links */}
           <FooterCol
             title="Links"
-            className="text-center md:text-left [animation-delay:120ms]"
+            className="[animation-delay:120ms]"
             links={[
               { label: "About Us", href: "#about" },
               { label: "Our Story", href: "#story" },

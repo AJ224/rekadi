@@ -126,13 +126,6 @@ export function FloatingOrderButton() {
         icon: <IconBag className="size-4 text-[var(--rk-deep)]" />,
       },
       {
-        key: "call",
-        label: "Order on call",
-        subLabel: "+91 77700 60305",
-        href: urls.callUrl ?? "",
-        icon: <IconPhone className="size-4 text-[var(--rk-deep)]" />,
-      },
-      {
         key: "direction",
         label: "Get Direction",
         subLabel: "Open in Maps",
