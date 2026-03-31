@@ -205,9 +205,9 @@ export function FloatingOrderButton() {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-3 rounded-2xl bg-[var(--rk-orange)] px-5 py-4 text-white shadow-[0_16px_30px_rgba(0,0,0,0.22)] transition hover:brightness-95 active:translate-y-[1px]"
+        className="inline-flex items-center gap-3 rounded-2xl border border-zinc-900/10 bg-white/55 px-5 py-4 text-[var(--rk-deep)] shadow-[0_16px_30px_rgba(0,0,0,0.18)] backdrop-blur transition hover:bg-white/65 active:translate-y-[1px]"
       >
-        <span className="grid size-9 place-items-center rounded-xl bg-white/15">
+        <span className="grid size-9 place-items-center rounded-xl bg-[var(--rk-surface)]">
           <CartIcon className="size-5" />
         </span>
         <span className="text-sm font-extrabold tracking-wide">
