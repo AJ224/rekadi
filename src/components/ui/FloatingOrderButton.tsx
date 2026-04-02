@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 
 import { CartIcon } from "@/components/icons/CartIcon";
@@ -13,23 +14,6 @@ type MenuItem = {
   icon: React.ReactNode;
   external?: boolean;
 };
-
-function BrandMark({
-  label,
-  className,
-}: Readonly<{
-  label: string;
-  className: string;
-}>) {
-  return (
-    <span
-      className={`grid size-8 shrink-0 place-items-center rounded-lg text-[13px] font-extrabold ${className}`}
-      aria-hidden="true"
-    >
-      {label}
-    </span>
-  );
-}
 
 function IconPhone(props: Readonly<{ className?: string }>) {
   return (
@@ -108,6 +92,17 @@ export function FloatingOrderButton() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    function onOpenOrderModal() {
+      setOpen(true);
+    }
+    globalThis.addEventListener("rekadi:open-order-modal", onOpenOrderModal);
+    return () => {
+      globalThis.removeEventListener("rekadi:open-order-modal", onOpenOrderModal);
+    };
+  }, []);
 
   const items = useMemo<MenuItem[]>(() => {
     const list: MenuItem[] = [
@@ -136,13 +131,31 @@ export function FloatingOrderButton() {
         key: "zomato",
         label: "Order on Zomato",
         href: urls.zomatoUrl ?? "",
-        icon: <BrandMark label="Z" className="bg-[#E23744] text-white" />,
+        icon: (
+          <Image
+            src="/zomato.webp"
+            alt=""
+            width={22}
+            height={22}
+            className="h-[22px] w-[22px] object-contain"
+          />
+        ),
+        external: true,
       },
       {
         key: "swiggy",
         label: "Order on Swiggy",
         href: urls.swiggyUrl ?? "",
-        icon: <BrandMark label="S" className="bg-[#FC8019] text-white" />,
+        icon: (
+          <Image
+            src="/swigy.png"
+            alt=""
+            width={22}
+            height={22}
+            className="h-[22px] w-[22px] object-contain"
+          />
+        ),
+        external: true,
       },
     ];
 
@@ -168,6 +181,11 @@ export function FloatingOrderButton() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    closeButtonRef.current?.focus();
+  }, [open]);
+
   if (items.length === 0) return null;
 
   return (
@@ -176,59 +194,82 @@ export function FloatingOrderButton() {
       className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3"
     >
       {open ? (
-        <div
-          id={panelId}
-          role="menu"
+        <dialog
+          open
+          className="fixed inset-0 z-[60] m-0 h-full w-full bg-transparent p-0"
           aria-label="Order options"
-          className="w-[min(320px,calc(100vw-3rem))] overflow-hidden rounded-2xl border border-zinc-900/10 bg-white/95 shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur"
+          onClick={() => setOpen(false)}
+          onKeyDown={() => {}}
         >
-          <div className="px-4 pb-2 pt-4">
-            <div className="text-sm font-extrabold tracking-wide text-[var(--rk-deep)]">
-              Order Now
-            </div>
-            <div className="mt-1 text-xs font-semibold text-zinc-600">
-              Choose where you want to order from
-            </div>
-          </div>
-
-          <div className="grid gap-1 px-2 pb-2">
-            {items.map((item) => {
-              const isExternal =
-                (item.external ??
-                  (item.href.startsWith("http://") || item.href.startsWith("https://"))) &&
-                !item.href.startsWith("#") &&
-                !item.href.startsWith("tel:");
-              return (
-                <a
-                  key={item.key}
-                  role="menuitem"
-                  href={item.href}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
-                  className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition hover:bg-zinc-900/5 active:bg-zinc-900/10"
+          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-0 grid place-items-center p-4">
+            <div
+              id={panelId}
+              role="menu"
+              className="w-[min(420px,calc(100vw-2rem))] overflow-hidden rounded-3xl border border-zinc-900/10 bg-white/95 shadow-[0_30px_90px_rgba(0,0,0,0.28)] backdrop-blur"
+              tabIndex={-1}
+              onClick={(e) => e.stopPropagation()}
+              onKeyDown={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-start justify-between gap-4 px-5 pb-3 pt-5">
+                <div className="min-w-0">
+                  <div className="text-sm font-extrabold tracking-wide text-[var(--rk-deep)]">
+                    Order Now
+                  </div>
+                  <div className="mt-1 text-xs font-semibold text-zinc-600">
+                    Choose where you want to order from
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  ref={closeButtonRef}
                   onClick={() => setOpen(false)}
+                  className="shrink-0 rounded-xl px-3 py-2 text-xs font-extrabold text-[var(--rk-deep)] transition hover:bg-zinc-900/5 active:bg-zinc-900/10"
                 >
-                  <span className="grid size-9 place-items-center rounded-xl bg-[var(--rk-surface)] text-[var(--rk-deep)]">
-                    {item.icon}
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block truncate text-sm font-extrabold text-[var(--rk-deep)]">
-                      {item.label}
-                    </span>
-                    {item.subLabel ? (
-                      <span className="block truncate text-xs font-semibold text-zinc-600">
-                        {item.subLabel}
+                  Close
+                </button>
+              </div>
+
+              <div className="grid gap-1 px-3 pb-4">
+                {items.map((item) => {
+                  const isExternal =
+                    (item.external ??
+                      (item.href.startsWith("http://") || item.href.startsWith("https://"))) &&
+                    !item.href.startsWith("#") &&
+                    !item.href.startsWith("tel:");
+                  return (
+                    <a
+                      key={item.key}
+                      role="menuitem"
+                      href={item.href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className="group flex items-center gap-3 rounded-2xl px-3 py-3 transition hover:bg-zinc-900/5 active:bg-zinc-900/10"
+                      onClick={() => setOpen(false)}
+                    >
+                      <span className="grid size-10 place-items-center rounded-2xl bg-[var(--rk-surface)] text-[var(--rk-deep)]">
+                        {item.icon}
                       </span>
-                    ) : null}
-                  </span>
-                  <span className="ml-auto text-zinc-400 transition group-hover:text-zinc-700">
-                    ›
-                  </span>
-                </a>
-              );
-            })}
+                      <span className="min-w-0">
+                        <span className="block truncate text-sm font-extrabold text-[var(--rk-deep)]">
+                          {item.label}
+                        </span>
+                        {item.subLabel ? (
+                          <span className="block truncate text-xs font-semibold text-zinc-600">
+                            {item.subLabel}
+                          </span>
+                        ) : null}
+                      </span>
+                      <span className="ml-auto text-zinc-400 transition group-hover:text-zinc-700">
+                        ›
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
           </div>
-        </div>
+        </dialog>
       ) : null}
 
       <button

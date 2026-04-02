@@ -1,8 +1,12 @@
+"use client";
+
+import type { MouseEventHandler, ReactNode } from "react";
+
 type CtaButtonLinkProps = Readonly<{
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
   target?: string;
   rel?: string;
   /**

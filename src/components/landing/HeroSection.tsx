@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { CtaButtonLink } from "@/components/ui/CtaButtonLink";
+import { OrderNowButtonLink } from "@/components/ui/OrderNowButtonLink";
 import urls from "@/config/urls.json";
 
 export function HeroSection() {
@@ -23,13 +24,12 @@ export function HeroSection() {
 
         <div className="absolute inset-x-0 bottom-6 px-5 md:bottom-10">
           <div className="mx-auto grid w-full max-w-xl grid-cols-2 gap-3 sm:flex sm:max-w-none sm:items-center sm:justify-center sm:gap-9">
-            <CtaButtonLink
-              href={urls.orderNowUrl}
+            <OrderNowButtonLink
               variant="hero"
               className="ds-anim-fade-up w-full sm:w-auto"
             >
               Order Now
-            </CtaButtonLink>
+            </OrderNowButtonLink>
             <CtaButtonLink
               href={urls.exploreMenuUrl}
               variant="hero"

@@ -5,7 +5,7 @@ import { useEffect, useId, useRef, useState } from "react";
 
 import { CartIcon } from "@/components/icons/CartIcon";
 import { Container } from "@/components/ui/Container";
-import { CtaButtonLink } from "@/components/ui/CtaButtonLink";
+import { OrderNowButtonLink } from "@/components/ui/OrderNowButtonLink";
 import urls from "@/config/urls.json";
 
 function IconMenu(props: Readonly<{ className?: string }>) {
@@ -103,14 +103,13 @@ export function Navbar() {
             <span className="sr-only">Open menu</span>
           </button>
 
-          <CtaButtonLink
-            href={urls.orderNowUrl}
+          <OrderNowButtonLink
             variant="navbar"
             className="!hidden md:!inline-flex ds-anim-fade-in"
           >
             <CartIcon className="size-5" />
             Order Now
-          </CtaButtonLink>
+          </OrderNowButtonLink>
         </div>
 
         {/* Mobile drawer */}
@@ -164,15 +163,14 @@ export function Navbar() {
                 </div>
 
                 <div className="mt-5">
-                  <CtaButtonLink
-                    href={urls.orderNowUrl}
+                  <OrderNowButtonLink
                     variant="hero"
                     className="w-full justify-center"
-                    onClick={() => setOpen(false)}
+                    onBeforeOpen={() => setOpen(false)}
                   >
                     <CartIcon className="size-5" />
                     Order Now
-                  </CtaButtonLink>
+                  </OrderNowButtonLink>
                 </div>
               </div>
             </div>

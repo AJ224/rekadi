@@ -139,13 +139,29 @@ function SocialCol() {
       key: "zomato",
       label: "Zomato",
       href: urls.zomatoUrl ?? "",
-      icon: <BrandMark label="Z" className="bg-[#E23744] text-white" />,
+      icon: (
+        <Image
+          src="/zomato.webp"
+          alt=""
+          width={22}
+          height={22}
+          className="h-[22px] w-[22px] object-contain"
+        />
+      ),
     },
     {
       key: "swiggy",
       label: "Swiggy",
       href: urls.swiggyUrl ?? "",
-      icon: <BrandMark label="S" className="bg-[#FC8019] text-white" />,
+      icon: (
+        <Image
+          src="/swigy.png"
+          alt=""
+          width={22}
+          height={22}
+          className="h-[22px] w-[22px] object-contain"
+        />
+      ),
     },
     {
       key: "petpooja",
@@ -153,7 +169,22 @@ function SocialCol() {
       href: urls.petpoojaUrl ?? "",
       icon: <BrandMark label="P" className="bg-[#00AEEF] text-white" />,
     },
-  ];
+  ].filter((o) => (o.href ?? "").trim().length > 0);
+
+  const socialLinks = [
+    {
+      key: "instagram",
+      label: "Instagram",
+      href: urls.instagramUrl ?? "",
+      icon: <IconInstagram className="size-5 text-white" />,
+    },
+    {
+      key: "facebook",
+      label: "Facebook",
+      href: urls.facebookUrl ?? "",
+      icon: <IconFacebook className="size-5 text-white" />,
+    },
+  ].filter((s) => (s.href ?? "").trim().length > 0);
 
   return (
     <div className="ds-anim-fade-up">
@@ -164,24 +195,18 @@ function SocialCol() {
         Social Media
       </h3>
       <div className="mt-4 flex items-center justify-center gap-3 md:justify-start">
-        <a
-          href={urls.instagramUrl ?? "https://www.instagram.com/"}
-          className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
-          aria-label="Instagram"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <IconInstagram className="size-5 text-white" />
-        </a>
-        <a
-          href={urls.facebookUrl ?? "https://www.facebook.com/"}
-          className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
-          aria-label="Facebook"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <IconFacebook className="size-5 text-white" />
-        </a>
+        {socialLinks.map((s) => (
+          <a
+            key={s.key}
+            href={s.href}
+            className="inline-flex size-10 items-center justify-center rounded-xl bg-white/10 transition hover:bg-white/20"
+            aria-label={s.label}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {s.icon}
+          </a>
+        ))}
       </div>
 
       <div className="mt-6">
@@ -193,28 +218,18 @@ function SocialCol() {
         </div>
         <div className="mt-3 flex items-center justify-center gap-3 md:justify-start">
           {orderIcons.map((o) => {
-            const enabled = (o.href ?? "").trim().length > 0;
-            const isExternal = enabled && !o.href.startsWith("#") && !o.href.startsWith("tel:");
-            return enabled ? (
+            const isExternal = !o.href.startsWith("#") && !o.href.startsWith("tel:");
+            return (
               <a
                 key={o.key}
                 href={o.href}
-                className="inline-flex size-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 transition hover:bg-white/20"
+                className="inline-flex size-10 items-center justify-center rounded-xl bg-white/10 transition hover:bg-white/20"
                 aria-label={o.label}
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noopener noreferrer" : undefined}
               >
                 {o.icon}
               </a>
-            ) : (
-              <div
-                key={o.key}
-                className="inline-flex size-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 opacity-60"
-                aria-label={o.label}
-                title={`${o.label} (coming soon)`}
-              >
-                {o.icon}
-              </div>
             );
           })}
         </div>
