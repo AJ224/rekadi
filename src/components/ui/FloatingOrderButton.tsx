@@ -15,23 +15,6 @@ type MenuItem = {
   external?: boolean;
 };
 
-function IconPhone(props: Readonly<{ className?: string }>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={props.className}
-      aria-hidden="true"
-    >
-      <path d="M22 16.9v2a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3h2a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 10.5a16 16 0 0 0 5.5 5.5l1.1-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6A2 2 0 0 1 22 16.9Z" />
-    </svg>
-  );
-}
-
 function IconPin(props: Readonly<{ className?: string }>) {
   return (
     <svg
@@ -46,26 +29,6 @@ function IconPin(props: Readonly<{ className?: string }>) {
     >
       <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z" />
       <circle cx="12" cy="10" r="2.5" />
-    </svg>
-  );
-}
-
-function IconGlobe(props: Readonly<{ className?: string }>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={props.className}
-      aria-hidden="true"
-    >
-      <circle cx="12" cy="12" r="9" />
-      <path d="M3 12h18" />
-      <path d="M12 3a14 14 0 0 1 0 18" />
-      <path d="M12 3a14 14 0 0 0 0 18" />
     </svg>
   );
 }
@@ -106,13 +69,6 @@ export function FloatingOrderButton() {
 
   const items = useMemo<MenuItem[]>(() => {
     const list: MenuItem[] = [
-      {
-        key: "website",
-        label: "From our website",
-        subLabel: "Order directly",
-        href: urls.orderNowUrl ?? "",
-        icon: <IconGlobe className="size-4 text-[var(--rk-deep)]" />,
-      },
       {
         key: "takeaway",
         label: "Takeaway",
